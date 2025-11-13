@@ -12,7 +12,6 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setLoading(true); 
         setError(null);
 
         const response = await axios.get(API_URL);
@@ -28,12 +27,10 @@ function App() {
 
     fetchData();
 
-    const interval = setInterval(fetchData, 300000);
-
+    const interval = setInterval(fetchData, 600000); //10 хв
     return () => clearInterval(interval);
-  }, [API_URL]); 
+  }, [API_URL]);
 
-  
   return (
     <LatestMeasurement
       latestData={latestData}

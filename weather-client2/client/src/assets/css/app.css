@@ -4,6 +4,7 @@
 }
 
 .card {
+  container-type: inline-size;
   background: rgba(255, 255, 255, 0.8);
   padding: 1.2rem;
   width: 100%;

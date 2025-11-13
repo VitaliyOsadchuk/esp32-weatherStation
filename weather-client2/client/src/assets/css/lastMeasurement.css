@@ -6,6 +6,7 @@
 
   @media (max-width: 1000px) {
     width: 100%;
+    padding: 1rem 0.5rem;
   }
 }
 
@@ -18,6 +19,18 @@
   line-height: 1.1;
 }
 
+h1{
+  font-size: clamp(1.5rem, 7cqi, 4rem);
+}
+
+h2{
+  font-size: clamp(1.2rem, 7cqi, 2rem);
+}
+
+p, strong{
+  font-size: clamp(0.8rem, 5cqi, 1.4rem);
+}
+
 .loading-dots::after {
   content: "...";
   animation: ellipsis 1.5s infinite steps(3);
@@ -26,6 +39,34 @@
   width: 1.25em;
   text-align: left; 
 }
+
+.status-active {
+  color: green;
+  font-weight: bold;
+}
+
+.status-disconnected {
+  color: red;
+  font-weight: bold;
+}
+
+.last-measurement__container {
+  padding: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: max(1.5rem, 3.5cqi);
+  text-align: center;
+
+  & .text-block{
+    line-height: 1.4;
+  }
+}
+
+.text-block {
+  flex: 0 1 auto;
+}
+
 
 @keyframes ellipsis {
   0% {
