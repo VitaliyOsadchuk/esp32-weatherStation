@@ -3,6 +3,12 @@
   color: #222;
 }
 
+.dashboard-container{
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
 .card {
   container-type: inline-size;
   background: rgba(255, 255, 255, 0.8);
