@@ -1,28 +1,27 @@
 .history-container {
+  width: 75%;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  width: 100%;
-  max-width: 1200px; 
-  margin: 0 auto;    
-  padding-bottom: 2rem;
-}
+  gap: 1rem;
 
-.chart-card {
-  background: rgba(255, 255, 255, 0.9);
-  min-height: 400px; 
-}
-
-.controls h3 {
-  margin-bottom: 1rem;
-  text-align: center;
+  @media (max-width: 1000px) {
+    width: 100%;
+  }
 }
 
 .button-group {
   display: flex;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 1rem;
   flex-wrap: wrap;
+
+  @media (max-width: 1000px) {
+    width: 100%;
+  }
+}
+
+.controls {
+  height: 8%;
 }
 
 .button-group button {
@@ -42,5 +41,13 @@
 .button-group button.active {
   background-color: #35a2eb;
   color: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.chart-card {
+  height: 45%;
+
+  @media (max-width: 1000px) {
+    max-height: 500px;
+  }
 }

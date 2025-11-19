@@ -2,8 +2,6 @@ import axios from "axios";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-
- // Запит на отримання історичних даних
 export const fetchHistoryData = async (range) => {
   const response = await axios.get(`${API_BASE_URL}/api/data/history`, {
     params: { range }, 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import {
   Chart as ChartJS,
@@ -31,7 +31,7 @@ const verticalLinePlugin = {
   id: 'verticalLine',
   afterDatasetsDraw: (chart) => {
     const { ctx, tooltip, chartArea: { top, bottom } } = chart;
-    if (tooltip._active && tooltip._active.length) {
+    if (tooltip && tooltip._active && tooltip._active.length) {
       const activePoint = tooltip._active[0];
       const x = activePoint.element.x;
       
@@ -49,6 +49,8 @@ const verticalLinePlugin = {
 
 export default function HistoryCharts() {
   const [range, setRange] = useState('week');
+  const chartRefOutdoor = useRef(null);
+  const chartRefIndoor = useRef(null);
 
   const { data, isLoading, error } = useQuery({
     queryKey: ['history', range],
@@ -57,10 +59,20 @@ export default function HistoryCharts() {
     placeholderData: keepPreviousData,
   });
 
+  useEffect(() => {
+    return () => {
+      if (chartRefOutdoor.current) {
+        chartRefOutdoor.current.destroy?.();
+      }
+      if (chartRefIndoor.current) {
+        chartRefIndoor.current.destroy?.();
+      }
+    };
+  }, []);
+
   if (isLoading) return <div className="card center-text"><p>Завантаження графіків<span className="loading-dots"></span></p></div>;
   if (error) return <div className="card center-text"><p>Помилка: {error.message}</p></div>;
 
-  // === СПІЛЬНІ НАЛАШТУВАННЯ ===
   const commonOptions = {
     responsive: true,
     maintainAspectRatio: false,
@@ -69,7 +81,7 @@ export default function HistoryCharts() {
       intersect: false,
     },
     animation: {
-        duration: 200, // 0.5 секунди (швидко і чітко)
+        duration: 200, 
         easing: 'easeOutQuart',
     },
     plugins: {
@@ -128,7 +140,7 @@ export default function HistoryCharts() {
     ...commonOptions,
     plugins: {
       ...commonOptions.plugins,
-      title: { display: true, text: 'Вуличний модуль', font: { size: 24, weight: 'normal' }, color: '#555' },
+      title: { display: true, text: 'Вуличний модуль', font: { size: 18, weight: 'normal' }, color: '#555' },
     },
     scales: {
       ...commonOptions.scales,
@@ -158,7 +170,7 @@ export default function HistoryCharts() {
     ...commonOptions,
     plugins: {
       ...commonOptions.plugins,
-      title: { display: true, text: 'Кімнатний модуль', font: { size: 24, weight: 'normal' }, color: '#555' },
+      title: { display: true, text: 'Кімнатний модуль', font: { size: 18, weight: 'normal' }, color: '#555' },
     },
     scales: {
       ...commonOptions.scales,

@@ -1,12 +1,10 @@
 .last-measurement {
-  padding: 1.5rem;
-  width: 30%;
+  width: 25%;
   display: flex;
   height: 100%;
 
   @media (max-width: 1000px) {
     width: 100%;
-    padding: 1rem 0.5rem;
   }
 }
 
