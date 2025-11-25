@@ -16,7 +16,9 @@
   flex-wrap: wrap;
 
   @media (max-width: 1000px) {
+    gap: 10px;
     width: 100%;
+    height: 100%;
   }
 }
 
@@ -24,9 +26,14 @@
   height: 8%;
 }
 
+.controls.card{
+  margin: 0;
+  height: auto;
+}
+
 .button-group button {
   padding: 0.5rem 1rem;
-  border: none;
+  border: 1px solid #808588;
   border-radius: 20px;
   background-color: #e0e0e0;
   cursor: pointer;
@@ -45,9 +52,11 @@
 }
 
 .chart-card {
+  min-height: 300px;
   height: 45%;
 
   @media (max-width: 1000px) {
     max-height: 500px;
+    padding: 10px;
   }
 }

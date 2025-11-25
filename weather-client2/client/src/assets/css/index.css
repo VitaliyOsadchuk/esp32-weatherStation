@@ -1,5 +1,6 @@
 body {
   min-height: 100vh;
+  background-color: #d1e3ef;
   background-image: url("../images/sky-background-endless.jpg");
   background-repeat: repeat-x;
   background-size: auto 100%;
